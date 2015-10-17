@@ -15,13 +15,14 @@ build-type:          Simple
 -- extra-source-files:
 cabal-version:       >=1.10
 
--- library
---   -- exposed-modules:
---   -- other-modules:
---   -- other-extensions:
---   build-depends:       base >=4.7 && <4.8
---   -- hs-source-dirs:
---   default-language:    Haskell2010
+library
+  exposed-modules:     Refs
+  build-depends:       base >= 4.7 && <5,
+                       bytestring,
+                       vector,
+                       cassava
+  hs-source-dirs:      src
+  default-language:    Haskell2010
 
 executable refs
   ghc-options:         -Wall
@@ -30,5 +31,17 @@ executable refs
   build-depends:       base >= 4.7 && <5,
                        bytestring,
                        vector,
+                       refs,
                        cassava
+  default-language:    Haskell2010
+
+
+test-suite tests
+  ghc-options:         -Wall
+  type:                exitcode-stdio-1.0
+  main-is:             Tests.hs
+  hs-source-dirs:      tests
+  build-depends:       base,
+                       refs,
+                       hspec >= 2.0 && < 2.1
   default-language:    Haskell2010

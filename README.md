@@ -12,6 +12,8 @@ This is a demo project that translate subset of SOE into the Elm language.
     cabal sandbox init
     cabal install --only-dependencies
     cabal build
+    cabal install --enable-tests
+    cabal repl tests
 ```
 
 ## Elm project setup (https://github.com/urfolomeus/seat_saver)
