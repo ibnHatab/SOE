@@ -10,6 +10,7 @@ import Dict exposing (Dict)
 
 import LSystem exposing (..)
 
+lSystem : LSystem
 lSystem =
     { axiom = [ '0' ],
       rules = Dict.fromList [ ('1', [ '1', '1' ]),
@@ -18,15 +19,19 @@ lSystem =
     }
 
 
-t1 = test "Addition" (assertEqual (Dict.get '1' lSystem.rules) (Just ['1', '1']))
-t2 = test "String.left" (assertEqual "a" (String.left 1 "abcdefg"))
-t3 = test "This test should fail" (assert True)
+t1 = test "Rules application"
+     ( let s = applyRules lSystem.rules '1'
+       in
+         assertEqual s [ '1', '1' ]
+     )
+-- t2 = test "String.left" (assertEqual "a" (String.left 1 "abcdefg"))
+-- t3 = test "This test should fail" (assert True)
 
 tests : Test
 tests = suite "A Test Suite"
         [ t1
-        , t2
-        , t3
+        -- , t2
+        -- , t3
         ]
 
 port requests : Signal Request
