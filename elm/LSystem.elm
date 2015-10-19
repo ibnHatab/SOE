@@ -1,13 +1,7 @@
 module LSystem (..) where
 
-import Graphics.Element exposing (..)
 import Dict exposing (Dict)
-import Set exposing (Set)
-
-import Lazy.List exposing (LazyList, (:::), (+++), empty)
-import Lazy exposing (Lazy, force, lazy)
-import List
-import Maybe
+import Lazy.List exposing (LazyList)
 
 type alias Symbol = Char
 type alias State = List Symbol
@@ -18,7 +12,6 @@ type alias LSystem = { axiom : State
 
 type alias Shrinker a = a -> LazyList a
 
-
 -- Growing from original axion by applying the rules
 applyRules : Rules -> Symbol -> State
 applyRules rs s =
@@ -26,46 +19,22 @@ applyRules rs s =
     Nothing ->    [s]
     Just x  ->     x
 
-
-evolve : Shrinker LSystem
+evolve : LSystem -> LSystem
 evolve ls =
-  let srinker symbol =
-        { ls | axiom <- applyRules ls.rules symbol }
+  let srinker symbol = applyRules ls.rules symbol
+      newState = List.map (srinker) ls.axiom |> List.concat
   in
-    Lazy.List.map (srinker) (Lazy.List.fromList ls.axiom)
+    { ls | axiom <- newState }
 
+forward : Shrinker LSystem
+forward ls =
+  Lazy.List.iterate evolve ls
 
--- forward : LazyList LSystem -> LazyList LSystem
-forward lls =
-  case Lazy.List.head lls of
-    Nothing -> Nothing
-    Just ls -> ls
-
+-- compute nth generation of lSystem
+generation : Int -> LSystem -> LSystem
 generation gen ls =
-  evolve ls |> Lazy.List.drop gen
-
-
--- Pythagoras Tree encoding
-lsystem =
-    { axiom = [ '0' ],
-      rules = Dict.fromList [ ('1', [ '1', '1' ]),
-                              ('0', [ '1', '[', '0', ']', '0' ])
-                            ]
-    }
-
-
--- forward : Rules -> LazyList State -> (State, LazyList State)
--- forward rs ls =
---   let init = g.axiom
---       gen = evolve g.rules
---   in
---     init |>
-
--- init : LSystem -> LazyList State
--- init = forward
-
-
---   List.map (\c -> applyRules c rs) s
-
-
--- main = show lSystem.rules
+  ls
+  |> forward
+  |> Lazy.List.drop gen
+  |> Lazy.List.head
+  |> Maybe.withDefault ls

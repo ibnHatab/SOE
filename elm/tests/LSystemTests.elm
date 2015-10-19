@@ -10,8 +10,9 @@ import Dict exposing (Dict)
 
 import LSystem exposing (..)
 
-lSystem : LSystem
-lSystem =
+-- Pythagoras Tree encoding
+lsystem : LSystem
+lsystem =
     { axiom = [ '0' ],
       rules = Dict.fromList [ ('1', [ '1', '1' ]),
                               ('0', [ '1', '[', '0', ']', '0' ])
@@ -20,18 +21,26 @@ lSystem =
 
 
 t1 = test "Rules application"
-     ( let s = applyRules lSystem.rules '1'
+     ( let s = applyRules lsystem.rules '1'
        in
          assertEqual s [ '1', '1' ]
      )
--- t2 = test "String.left" (assertEqual "a" (String.left 1 "abcdefg"))
--- t3 = test "This test should fail" (assert True)
+
+t2 = test "create gen zero"
+     ( let zero = generation 0 lsystem
+       in  assertEqual lsystem zero )
+
+t3 = test "expected generation"
+     ( let gen = generation 3 lsystem
+           hash = String.fromList gen.axiom
+       in  assertEqual hash "1111[11[1[0]0]1[0]0]11[1[0]0]1[0]0" )
+
 
 tests : Test
 tests = suite "A Test Suite"
         [ t1
-        -- , t2
-        -- , t3
+        , t2
+        , t3
         ]
 
 port requests : Signal Request
