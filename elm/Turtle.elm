@@ -1,5 +1,9 @@
 module Turtle (..) where
 
+import Graphics.Element exposing (..)
+import Graphics.Collage exposing (..)
+import Color exposing (..)
+
 import LSystem exposing (..)
 import Dict exposing (Dict)
 
@@ -79,3 +83,16 @@ toTurtle init ts xs =
                        (Just op, s) -> (op::ops, s)
                   ) ([], init)
     |> fst
+
+display :
+  State -> LSystem -> Translation
+        -> (Int, Int) -> Int -> Element
+display init system translaion
+          (w,h) gen =
+  let population = generation gen system
+      paths = toTurtle init translaion population.axiom
+      forms =
+        paths
+          |> List.map (\(s, e) ->
+            segment (s.x, s.y) (e.x, e.y) |> (traced (solid black)) )
+  in collage w h forms
