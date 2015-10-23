@@ -72,7 +72,6 @@ derived from another article [Fun with L-System](http://www.clear-lines.com/blog
 ## Usefull Links
 * [The Haskell School of Expression: Exercises](http://www.elbeno.com/haskell_soe_blog/?page_id=24)
 
-# Book Notices
 ## Chapter  1. Problem Solving, Programming, and Calculation
 
 ## Chapter  2. A Module of Shapes: Part I
@@ -88,14 +87,19 @@ Right not ELM has rastriction on hiegher order polymorhism. Thought I have not e
 ## Chapter  6. Shapes III: Perimeters of Shapes
 Elm looks like toy language comparably to Haskell. But in fact it is very shap tool.
 I don't know any FP lang missing basic `zip`; `zipWith` in library.
-Don't warry, in Elm thay expressed as `List.map2 (,)` and `List.map2 f`, nice!
+
+In Elm thay expressed as `List.map2 (,)` and `List.map2 f`.
+
+Nice!
 
 ## Chapter  7. Trees
 
 ## Chapter  8. A Module of Regions
-*elm/Region.elm*
+- [Region.elm](elm/Region.elm)
+
 Algebraic properties of Region can be checked using randomized test.
-Take example of Union assotiativity from *elm/tests/TegeonTests.elm*.
+
+Take example of Union assotiativity from [RegeonTests.elm][elm/tests/RegeonTests.elm].
 ```elm
         , ( test "Union is assotiative"
             -- claim that
@@ -110,6 +114,9 @@ Take example of Union assotiativity from *elm/tests/TegeonTests.elm*.
             (Random.initialSeed 42) -- seed
           )
 ```
+* I did not use elm-check DSL syntaxes only because already has setup fro console ElmTest runner.
+Shortcut was to employ elm-check to ElmTest integration and go with the single runner.
+
 
 ## Chapter  9. More About Higher-Order Functions
 
