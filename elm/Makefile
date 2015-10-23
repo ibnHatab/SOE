@@ -4,8 +4,9 @@
 ELM_COMPILE=elm-make --yes --warn
 
 ELM_IO = elm-stuff/packages/maxsnew/IO/1.0.1/elm-io.sh
+
 TESTS=$(wildcard tests/*.elm)
-TEST_JS=$(patsubst %.elm,%.elm.js,$(TESTS))
+TESTS_JS=$(patsubst %.elm,%.elm.test.js,$(TESTS))
 
 TARGETS=$(wildcard *.elm)
 TARGETS_JS=$(patsubst %.elm,%.js,$(TARGETS))
@@ -19,13 +20,15 @@ compile: $(TARGETS_JS)
 	$(ELM_COMPILE) $< --output $@
 
 
-test: $(TESTS)
+test: $(TESTS_JS)
+
+%.elm.test.js: %.elm
 	elm-make --yes $< --output tests/raw.test.js
-	$(ELM_IO) tests/raw.test.js $<.js
-	node $<.js
+	$(ELM_IO) tests/raw.test.js $<.test.js
+	node $<.test.js && rm $<.test.js tests/raw.test.js
 
 clean-test:
-	-@rm $(TEST_JS) test/raw.test.js
+	-@rm $(TESTS_JS) test/raw.test.js || true
 
 clean: clean-test
-	-@rm $(TARGETS_JS)
+	-@rm $(TARGETS_JS) || true
