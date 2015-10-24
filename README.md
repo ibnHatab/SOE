@@ -4,11 +4,8 @@
 
 This is a demo project that translate subset of SOE into the Elm language.
 
-SOE stands for `The Haskell School of Expression` by Paul Hudak.
+SOE stands for `The Haskell School of Expression` by `Paul Hudak`
 
-* This is educational purpose only tinkering with ML language.
-* Idea is old; you can write Fortran in any program language, however
-  you have to implement Lisp first.
 
 ## [Haskell project setup](https://howistart.org/posts/haskell/1)
 
@@ -79,8 +76,9 @@ derived from another article
   [elm/Turtle.elm](elm/Turtle.elm) is close to original and more
   functional F# code.
 * Few examples given in
-  [elm/PythagorasTree.elm](elm/PythagorasTree.elm) and
-  [elm/Serpinski.elm](elm/Serpinski.elm).
+  [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [DEMO](https://raw.githubusercontent.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
+      and
+  [elm/Serpinski.elm](elm/Serpinski.elm) [DEMO](https://raw.githubusercontent.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
 
 ### Useful Links
 * [The Haskell School of Expression: Exercises](http://www.elbeno.com/haskell_soe_blog/?page_id=24)
@@ -88,10 +86,10 @@ derived from another article
 ### Chapter  1. Problem Solving, Programming, and Calculation
 
 ### Chapter  2. A Module of Shapes: Part I
-*elm/Shape.elm*
+[elm/Shape.elm](elm/Shape.elm)
 
 ### Chapter  3. Simple Graphics (Snowflake)
-Skipped, see LSystem files a PhD style of simple drawings.
+Skipped this on, see LSystem files - a PhD style of simple drawings.
 
 ### Chapter  4. Shapes II: Drawing Shapes
 
@@ -117,7 +115,9 @@ Nice!
 
 Algebraic properties of Region can be checked using randomized test.
 
-Take example of Union associative from [RegeonTests.elm][elm/tests/RegeonTests.elm].
+Take example of Union associative from
+   [RegeonTests.elm][elm/tests/RegionTests.elm].
+
 ```elm
         , ( test "Union is associative"
             -- claim that
@@ -132,13 +132,32 @@ Take example of Union associative from [RegeonTests.elm][elm/tests/RegeonTests.e
             (Random.initialSeed 42) -- seed
           )
 ```
-* I did not use nice elm-check DSL syntax only because already has
-  setup fro ElmTest console runner.  Shortcut was to employ elm-check
-  to ElmTest integration and go with the single runner.
+Here `shape` is generator defined as:
+```elm
+shape =
+  let
+    shrinker (RShape (Rectangle x y)) =
+      (\ w h -> (RShape (Rectangle w h)))
+      `Shrink.map`    shrink float x
+      `Shrink.andMap` shrink float y
+
+    generator =
+      (\ w h -> (RShape (Rectangle w h)))
+      `Random.Extra.map`    random float
+      `Random.Extra.andMap` random float
+  in
+    investigator generator shrinker
+```
+
+* I did not use nice elm-check DSL syntax here, only because already
+  has setup fro ElmTest console runner.  Shortcut was to employ
+  elm-check to ElmTest integration and go with the single runner.
 
 ### Chapter  9. More About Higher-Order Functions
 
 ### Chapter 10. Drawing Regions
+
+
 ### Chapter 11. Proof by Induction
 ### Chapter 12. Qualified Types
 ### Chapter 13. A Module of Simple Animations

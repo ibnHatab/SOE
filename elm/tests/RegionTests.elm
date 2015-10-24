@@ -57,11 +57,14 @@ tests = suite "Algebraic properties of region" [
                ((r1 `union` r2) `union` r3 )`containsR` (x, y) )
             -- for
             (tuple5 (shape, shape, shape, float, float))
-            1000                               -- num of test
-            (Random.initialSeed 42) -- seed
+            -- num of test
+            1000
+            -- with seed
+            (Random.initialSeed 42)
           )
         ]
 
+-- console runner
 port requests : Signal Request
 port requests = run responses (runDisplay tests)
 

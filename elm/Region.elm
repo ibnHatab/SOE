@@ -68,5 +68,9 @@ containsR s (x,y) =
       r1 `containsR` (x,y) || r2 `containsR` (x,y)
     (Intersect r1 r2) ->
       r1 `containsR` (x,y) && r2 `containsR` (x,y)
+    (Xor r1 r2) ->
+      let a = r1 `containsR` (x,y)
+          b = r2 `containsR` (x,y)
+      in (a || b) && not (a && b)
     Empty ->
       False
