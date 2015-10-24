@@ -76,9 +76,9 @@ derived from another article
   [elm/Turtle.elm](elm/Turtle.elm) is close to original and more
   functional F# code.
 * Few examples given in
-  [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [DEMO](https://raw.githubusercontent.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
+  [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
       and
-  [elm/Serpinski.elm](elm/Serpinski.elm) [DEMO](https://raw.githubusercontent.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
+  [elm/Serpinski.elm](elm/Serpinski.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
 
 ### Useful Links
 * [The Haskell School of Expression: Exercises](http://www.elbeno.com/haskell_soe_blog/?page_id=24)
