@@ -25,9 +25,10 @@ area shape =
     Ellipse    r1 r2   -> pi*r1*r2
     Polygon    (v1::vs)->  let polyArea vs =
                                  case vs of
-                                   (v2::v3::vs') -> triAreapic4 v1 v2 v3 + polyArea (v3::vs')
+                                   (v2::v3::vs') -> triArea v1 v2 v3 + polyArea (v3::vs')
                                    otherwise     -> 0
                            in polyArea vs
+
 
 triArea : Vertex -> Vertex -> Vertex -> Float
 triArea v1 v2 v3 =
