@@ -1,13 +1,13 @@
 
 ## SOE Notes
 
+This project translates subset(??) of SOE into the Elm language.
 
-This is a demo project that translate subset of SOE into the Elm language.
+* SOE stands for `The Haskell School of Expression` by `Paul Hudak`
 
-SOE stands for `The Haskell School of Expression` by `Paul Hudak`
+* [The Haskell School of Expression: Exercises](http://www.elbeno.com/haskell_soe_blog/?page_id=24)
 
-
-## [Haskell project setup](https://howistart.org/posts/haskell/1)
+### [Haskell project setup](https://howistart.org/posts/haskell/1)
 
 ```
     # create a folder for our Haskell project
@@ -37,7 +37,7 @@ SOE stands for `The Haskell School of Expression` by `Paul Hudak`
 
 Simplest is to use `inotify` loop in console:
 ```bash
-#!/bin/sh
+\#!/bin/sh
 
 CMD=$1
 echo $CMD
@@ -65,9 +65,15 @@ done
 
 ```
 
-### Graphics in Elm
 
-To make first take on graphics in ELM we follow
+### Chapter  1. Problem Solving, Programming, and Calculation
+Basic FP.
+
+### Chapter  2. A Module of Shapes: Part I
+It is one to one translation from Haskell code: [elm/Shape.elm](elm/Shape.elm).
+There is no multiple function clause in Elm. It force you to the canonical `case/of` syntax.
+### Chapter  3. Simple Graphics (Snowflake)
+First take on graphics in ELM. We follow
 [Elm – fun with L-System](http://theburningmonk.com/2015/10/elm-fun-with-l-system-part-4/)
 derived from another article
 [Fun with L-System](http://www.clear-lines.com/blog/post/Fun-with-L-system.aspx).
@@ -75,23 +81,16 @@ derived from another article
 * Encoding in [elm/LSystem.elm](elm/LSystem.elm) and display module
   [elm/Turtle.elm](elm/Turtle.elm) is close to original and more
   functional F# code.
-* Few examples given in
-  [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
+* Few examples given here..
+** [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
       and
-  [elm/Serpinski.elm](elm/Serpinski.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
+** [elm/Serpinski.elm](elm/Serpinski.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
 
-### Useful Links
-* [The Haskell School of Expression: Exercises](http://www.elbeno.com/haskell_soe_blog/?page_id=24)
-
-### Chapter  1. Problem Solving, Programming, and Calculation
-
-### Chapter  2. A Module of Shapes: Part I
-[elm/Shape.elm](elm/Shape.elm)
-
-### Chapter  3. Simple Graphics (Snowflake)
-Skipped this on, see LSystem files - a PhD style of simple drawings.
+- Use left/right keys in demo page to walk over L-System generations.
 
 ### Chapter  4. Shapes II: Drawing Shapes
+SOE use raster graphics library but we will stick to 2D forms in HTML5.
+We can't implement some collate like shape intersection and xor.
 
 ### Chapter  5. Polymorphic and Higher-Order Functions
 
@@ -154,9 +153,11 @@ shape =
   elm-check to ElmTest integration and go with the single runner.
 
 ### Chapter  9. More About Higher-Order Functions
-
 ### Chapter 10. Drawing Regions
-
+Translation is in one file [elm/Picture.elm](elm/Picture.elm)
+- we draw the Picture with given color -> Region with translations -> Shape -> Collage.Shape
+- Plug the Mouse clicks into update function and rearange Picture overlapping.
+* [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Picture.html)
 
 ### Chapter 11. Proof by Induction
 ### Chapter 12. Qualified Types

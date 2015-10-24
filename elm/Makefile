@@ -11,7 +11,7 @@ TESTS_JS=$(patsubst %.elm,%.elm.test.js,$(TESTS))
 TARGETS=$(wildcard *.elm)
 TARGETS_JS=$(patsubst %.elm,%.js,$(TARGETS))
 
-DEMO = demo/PythagorasTree.html demo/Serpinski.html
+DEMO = demo/PythagorasTree.html demo/Serpinski.html demo/Picture.html
 
 all: compile
 

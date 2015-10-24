@@ -6,11 +6,11 @@ import Shape exposing (..)
 
 type alias Vector = (Float, Float)
 
-type Region = RShape Shape               -- primiv shape
-            | Translate Vector Region -- translated region
-            | Scale Vector Region
+type Region = RShape Shape              -- primiv shape
+            | Translate Vector Region   -- translated region
+            | Scale Vector Region       -- scale region
             | Complement Region         -- inverse of region
-            | Union Region Region
+            | Union Region Region       -- union of two regions
             | Intersect Region Region   -- intersection of regions
             | Xor Region Region         -- XOR of regions
             | Empty                     -- empty region
@@ -27,6 +27,12 @@ s1 `intersect` s2 = Intersect s1 s2
 univ : Region
 univ = Complement Empty
 
+{- exclusive union of two region -}
+xUnion : Region -> Region -> Region
+p1 `xUnion` p2 = (p1 `intersect` Complement p2) `union`
+                 (p2 `intersect` Complement p1)
+
+{- determine if Region contains the given point -}
 type alias Coordinate = (Float,Float)
 type alias Ray = (Coordinate, Coordinate)
 
