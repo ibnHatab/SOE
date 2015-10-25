@@ -82,11 +82,12 @@ derived from another article
   [elm/Turtle.elm](elm/Turtle.elm) is close to original and more
   functional F# code.
 * Few examples given here..
-** [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
-      and
-** [elm/Serpinski.elm](elm/Serpinski.elm) [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
 
-- Use left/right keys in demo page to walk over L-System generations.
+** [elm/PythagorasTree.elm](elm/PythagorasTree.elm) [LiveDEMO](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/PythagorasTree.html)
+
+** [elm/Serpinski.elm](elm/Serpinski.elm) [LiveDEMO](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Serpinski.html).
+
+- Use `left/right` keys in demo page to walk over L-System generations.
 
 ### Chapter  4. Shapes II: Drawing Shapes
 SOE use raster graphics library but we will stick to 2D forms in HTML5.
@@ -157,11 +158,14 @@ shape =
 Translation is in one file [elm/Picture.elm](elm/Picture.elm)
 - we draw the Picture with given color -> Region with translations -> Shape -> Collage.Shape
 - Plug the Mouse clicks into update function and rearange Picture overlapping.
-* [> DEMO <](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Picture.html)
+* [LiveDEMO](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Picture.html)
 
 ### Chapter 11. Proof by Induction
+! factorial and induction on lists and naturals.
 ### Chapter 12. Qualified Types
+EQ and others typeclasses aren't jet in Elm.
 ### Chapter 13. A Module of Simple Animations
+
 ### Chapter 14. Programming With Streams (Memoization)
 ### Chapter 15. A Module of Reactive Animations
 ### Chapter 16. Communicating With the Outside World

@@ -15,10 +15,13 @@ type Picture = PRegion Color Region
              | Over Picture Picture
              | EmptyPic
 
+
 over : Picture -> Picture -> Picture
 p1 `over` p2 = Over p1 p2
 
-drawPic : Picture -> List Form
+type alias Graphic = List Form
+
+drawPic : Picture -> Graphic
 drawPic p =
   case p of
     (Over p1 p2) ->
@@ -28,9 +31,10 @@ drawPic p =
     EmptyPic ->
       []
 
-drawRegion : Color -> Region -> List Form
+drawRegion : Color -> Region -> Graphic
 drawRegion c r =
   (regionToGRegion r) |> List.map (filled c)
+
 
 regionToGRegion : Region -> List C.Shape
 regionToGRegion r = regToGReg (0,0) (1,1) r
