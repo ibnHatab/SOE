@@ -23,11 +23,13 @@ area shape =
     Rectangle  s1 s2   -> s1*s2
     RtTriangle s1 s2   -> s1*s2/2
     Ellipse    r1 r2   -> pi*r1*r2
-    Polygon    (v1::vs)->  let polyArea vs =
-                                 case vs of
-                                   (v2::v3::vs') -> triArea v1 v2 v3 + polyArea (v3::vs')
-                                   otherwise     -> 0
-                           in polyArea vs
+    Polygon    (v1::vs)->
+      let polyArea vs =
+            case vs of
+              (v2::v3::vs') ->
+                triArea v1 v2 v3 + polyArea (v3::vs')
+              otherwise     -> 0
+      in polyArea vs
 
 
 triArea : Vertex -> Vertex -> Vertex -> Float
