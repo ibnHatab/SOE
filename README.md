@@ -165,7 +165,8 @@ Translation is in one file [elm/Picture.elm](elm/Picture.elm)
 ### Chapter 12. Qualified Types
 EQ and others typeclasses aren't jet in Elm.
 ### Chapter 13. A Module of Simple Animations
-
+Type classes seems to be main building blocks for additive Animations.
+* [LiveDEMO](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Animation.html)
 ### Chapter 14. Programming With Streams (Memoization)
 ### Chapter 15. A Module of Reactive Animations
 ### Chapter 16. Communicating With the Outside World
