@@ -201,12 +201,10 @@ Type classes seems to be main building blocks for additive Animations.
 
 
 ### A learning project for Elm programming language
-
-    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+* (Challenge No. 1)[elm/arch/ChallengeOne.elm]
       Simple mouse event
-    - (Challenge No. 2)[elm/arch/ChallengeTwo.elm]
+* (Challenge No. 2)[elm/arch/ChallengeTwo.elm]
       Random seed using Signal and custom RandomGenerator
-
-    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
-    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
-    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+* (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+* (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+* (Challenge No. 1)[elm/arch/ChallengeOne.elm]
