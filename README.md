@@ -169,16 +169,44 @@ EQ and others typeclasses aren't jet in Elm.
 ### Chapter 13. A Module of Simple Animations
 Type classes seems to be main building blocks for additive Animations.
 * [LiveDEMO](https://raw.githack.com/ibnHatab/SOE/master/elm/demo/Animation.html)
+
 ### Chapter 14. Programming With Streams (Memoization)
+
 ### Chapter 15. A Module of Reactive Animations
+    [ELM Reactivity](http://elm-lang.org/guide/reactivity)
+
 ### Chapter 16. Communicating With the Outside World
+    [ELM Interop](http://elm-lang.org/guide/interop)
+
 ### Chapter 17. Rendering Reactive Animations
+    [The Yampa Arcade](http://haskell.cs.yale.edu/wp-content/uploads/2011/01/yampa-arcade.pdf)
+
 ### Chapter 18. Higher-Order Types
+
 ### Chapter 19. An Imperative Robot Language
+
 ### Chapter 20. Functional Music Composition
+
 ### Chapter 21. Interpreting Functional Music
+
 ### Chapter 22. From Performance to MIDI
+
 ### Chapter 23. A Tour of the PreludeList Module
+
 ### Chapter 24. A Tour of Haskell's Standard Type Classes
+
 ### Chapter 25. Appendix A. Built-in Types Are Not Special
+
 ### Chapter 26. Appendix B. Pattern-Matching Details
+
+
+### A learning project for Elm programming language
+
+    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+      Simple mouse event
+    - (Challenge No. 2)[elm/arch/ChallengeTwo.elm]
+      Random seed using Signal and custom RandomGenerator
+
+    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
+    - (Challenge No. 1)[elm/arch/ChallengeOne.elm]
