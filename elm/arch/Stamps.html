@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title>Embedding Elm</title>
+  <script src="Stamps.js"></script>
+  <style>
+  #elm-stamps {
+    width:  400px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #babdb6;
+  }
+  </style>
+</head>
+
+<body>
+  <h1>Stamps</h1>
+
+  <div id="elm-stamps"></div>
+
+  <p>There are currently <span id="current-count">0</span> stamps.
+     <button onclick="resetStamps()">Reset</button>
+  </p>
+  <p>You have created <span id="total-count">0</span> stamps in total.</p>
+
+</body>
+
+<script type="text/javascript">
+  var div = document.getElementById('elm-stamps');
+  var stamps = Elm.embed(Elm.Stamps, div, { reset:[] });
+
+ function resetStamps() {
+     stamps.ports.reset.send([]);
+ }
+  // Always show the latest count of stamps, which is exported
+  // from the Stamps module as the 'count' event stream.
+  var currentCount = document.getElementById('current-count'),
+      totalCount   = document.getElementById('total-count'),
+      total        = 0;
+  stamps.ports.count.subscribe(function(count) {
+      currentCount.innerHTML = count;
+      if (count > 0) {
+          total += 1;
+          totalCount.innerHTML = total;
+      }
+  });
+</script>
+
+</html>

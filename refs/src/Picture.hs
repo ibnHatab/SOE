@@ -72,7 +72,7 @@ shapeToGRegion (lx,ly) (sx,sy) s =
                          yWin2 - inchToPixel (ly+y*sy) )
 
 regionToGRegion :: Region -> G.Region
-regionToGRegion r = regToGReg (0,0) (1,1) r
+regionToGRegion = regToGReg (0,0) (1,1)
 
 regToGReg :: Vector -> Vector -> Region -> G.Region
 regToGReg loc sca (Shape s)

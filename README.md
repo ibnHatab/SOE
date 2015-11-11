@@ -1,6 +1,8 @@
 
 ## SOE Notes
 
+Richard Feynman said what I cannot create I do not understand.
+
 This project translates subset(??) of SOE into the Elm language.
 
 * SOE stands for `The Haskell School of Expression` by `Paul Hudak`

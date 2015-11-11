@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <script src="Shanghai.js"></script>
+
+        <style>
+         #shanghai-port  {
+             width: 400px;
+             height: 400px;
+             background-color: blue;
+             border: 1px solid #00bdbd
+         }
+        </style>
+    </head>
+    <body>
+        <div id="shanghai-port"></div>
+    </body>
+
+    <script type="text/javascript">
+
+        console.log("START")
+
+        var divPort = document.getElementById("shanghai-port");
+
+        var shanghai = Elm.worker(Elm.Shanghai, {
+        incomingShip: { name: "", capacity: 0 },
+        outgoingShip: { name: "" }
+        });
+
+
+        shanghai.ports.totalCapacity.subscribe(logger);
+        function logger(x) {console.log("Total: " + x)}
+
+        // send some ships to the port of Shanghai
+        shanghai.ports.incomingShip.send({
+        name:"Mary Mærsk",
+        capacity:18270
+        });
+
+        shanghai.ports.incomingShip.send({
+        name:"Emma Mærsk",
+        capacity:15500
+        });
+
+        // have those ships leave the port of Shanghai
+        shanghai.ports.outgoingShip.send({name: "Mary Mærsk"});
+        shanghai.ports.outgoingShip.send({name: "Emma Mærsk"});
+
+
+
+    </script>
+</html>
