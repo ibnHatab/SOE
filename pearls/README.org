@@ -6,16 +6,16 @@ AUTHOR: Richard Bird
 Table of Contents
 
 Preface
-1. The smallest free number (TheSmallestFreeNumber.hs)
-2. A surpassing problem
-3. Improving on saddleback search
-4. A selection problem
-5. Sorting pairwise sums
-6. Making a century
-7. Building a tree with minimum height
-8. Unravelling greedy algorithms
-9. Finding celebrities
-10. Removing duplicates
+1. The smallest free number ([[file:src/TheSmallestFreeNumber.hs][TheSmallestFreeNumber.hs]])
+2. A surpassing problem  ( gASurpassingProblem.hs )
+3. Improving on saddleback search ( Improving on saddleback search.hs )
+4. A selection problem ( A selection problem.hs )
+5. Sorting pairwise sums ( Sorting pairwise sums.hs )
+6. Making a century ( Making a century.hs )
+7. Building a tree with minimum height ( Building a tree with minimum height.hs )
+8. Unravelling greedy algorithms ( Unravelling greedy algorithms.hs )
+9. Finding celebrities ( Finding celebrities.hs )
+10. Removing duplicates ( Removing duplicates.hs )
 11. Not the maximum segment sum
 12. Ranking suffixes
 13. The Burrows–Wheeler transform
