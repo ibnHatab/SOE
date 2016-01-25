@@ -7,9 +7,9 @@ Table of Contents
 
 Preface
 1. The smallest free number ([[file:src/TheSmallestFreeNumber.hs][TheSmallestFreeNumber.hs]])
-2. A surpassing problem  ( gASurpassingProblem.hs )
-3. Improving on saddleback search ( Improving on saddleback search.hs )
-4. A selection problem ( A selection problem.hs )
+2. A surpassing problem  ( [[file:src/ASurpassingProblem.hs][ASurpassingProblem.hs]] )
+3. Improving on saddleback search ( [[file:src/ImprovingOnSaddlebackSearch.hs][ImprovingOnSaddlebackSearch.hs]] )
+4. A selection problem ( ASelectionProblem.hs )
 5. Sorting pairwise sums ( Sorting pairwise sums.hs )
 6. Making a century ( Making a century.hs )
 7. Building a tree with minimum height ( Building a tree with minimum height.hs )
