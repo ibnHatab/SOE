@@ -1,5 +1,9 @@
 Pearls of Functional Algorithm Design
 
+( make it Work, make it Right, make it Fast )
+
+http://www.atamo.com/blog/how-to-read-pearls-by-richard-bird-1/
+
 AUTHOR: Richard Bird
 
 
@@ -7,13 +11,68 @@ Table of Contents
 
 Preface
 1. The smallest free number ([[file:src/TheSmallestFreeNumber.hs][TheSmallestFreeNumber.hs]])
+#+BEGIN_SRC lang Haskell
+minfree :: [Int] -> Int
+minfree xs = head ([0..] \\ xs)
+#+END_SRC
 2. A surpassing problem  ( [[file:src/ASurpassingProblem.hs][ASurpassingProblem.hs]] )
+#+BEGIN_SRC
+-- maximum surpassing count
+msc :: Ord a => [a] -> Int
+msc xs =  maximum [scount z zs | z : zs <- tails xs]
+
+scount x xs = length (filter (> x) xs)
+
+tails [] = []
+tails (x : xs) = xs : (tails xs)
+
+#+END_SRC
 3. Improving on saddleback search ( [[file:src/ImprovingOnSaddlebackSearch.hs][ImprovingOnSaddlebackSearch.hs]] )
+Lambert algorithm
+#+BEGIN_SRC
+invert :: (Enum a, Eq a, Num a) => (a -> a -> a) -> a -> [(a,a)]
+invert f z = [(x, y) | x <-[0..z], y <- [0..z], f x y == z ]
+#+END_SRC
 4. A selection problem ( [[file:src/ASelectionProblem.hs][ASelectionProblem.hs]] )
+#+BEGIN_SRC
+smallest k (xs, us) = union (xs, us) !! k
+
+union (xs, []) = xs
+union ([], ys) = ys
+union (xss@(x:xs), yss@(y:ys))
+  | x < y = x : union (xs, yss)
+  | x >= y = y : union (xss, ys)
+
+#+END_SRC
 5. Sorting pairwise sums ( [[file:src/SortingPairwiseSums.hs][SortingPairwiseSums.hs]] )
-6. Making a century ( Making a century.hs )
-7. Building a tree with minimum height ( Building a tree with minimum height.hs )
-8. Unravelling greedy algorithms ( Unravelling greedy algorithms.hs )
+#+BEGIN_SRC
+-- sortsum :: [Int] -> [Int] -> [Int]
+-- sortsum xs ys = sortBy cmp [ x + y | x <-xs, y <-ys]
+#+END_SRC
+6. Making a century ( [[file:src/MakingACentury.hs][MakingACentury.hs]] )
+   | greedy |
+#+BEGIN_SRC
+type Expression = [Term]
+type Term = [Factor]
+type Factor = [Digit]
+type Digit = Int
+
+res = filter (good . valExpr) (expressions' digits)
+
+#+END_SRC
+7. Building a tree with minimum height ( [[file:src/BuildingATreeWithMinimumHeight.hs][BuildingATreeWithMinimumHeight.hs]] )
+   | greedy |
+#+BEGIN_SRC
+mincostTree :: [Int] -> Tree
+mincostTree = minBy cost . trees''
+
+trees :: [Int] -> [Tree]
+trees [x] = [Leaf x]
+trees (x : xs) = concatMap (prefixes x) (trees xs)
+
+#+END_SRC
+8. Unravelling greedy algorithms ( [[file:src/UnravellingGreedyAlgorithms.hs][UnravellingGreedyAlgorithms.hs]])
+   | greedy |
 9. Finding celebrities ( Finding celebrities.hs )
 10. Removing duplicates ( Removing duplicates.hs )
 11. Not the maximum segment sum
