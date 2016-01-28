@@ -72,8 +72,20 @@ trees (x : xs) = concatMap (prefixes x) (trees xs)
 
 #+END_SRC
 8. Unravelling greedy algorithms ( [[file:src/UnravellingGreedyAlgorithms.hs][UnravellingGreedyAlgorithms.hs]])
-   | greedy |
-9. Finding celebrities ( Finding celebrities.hs )
+   | greedy | linear |
+#+BEGIN_SRC
+supravel' :: Ord a => [a] -> [[a]]
+supravel' = foldr insert' []
+
+insert' :: Ord a => a -> [[a]] -> [[a]]
+insert' x [] = [[x]]
+insert' x (xs:xss) = if x <= head xs
+                     then (x:xs) : xss
+                     else xs : insert' x xss
+
+#+END_SRC
+
+9. Finding celebrities ( FindingCelebrities.hs )
 10. Removing duplicates ( Removing duplicates.hs )
 11. Not the maximum segment sum
 12. Ranking suffixes
