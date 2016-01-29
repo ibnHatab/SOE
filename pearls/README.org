@@ -86,6 +86,18 @@ insert' x (xs:xss) = if x <= head xs
 #+END_SRC
 
 9. Finding celebrities ( FindingCelebrities.hs )
+ | linear |
+#+BEGIN_SRC
+cclique'' :: Party -> [Person]
+cclique'' = foldr op []
+op p cs
+    | null cs           = [p]
+    | not (p `knows` c) = [p]
+    | not (c `knows` p) = cs
+    | otherwise         = p:cs
+    where c = head cs
+
+#+END_SRC
 10. Removing duplicates ( Removing duplicates.hs )
 11. Not the maximum segment sum
 12. Ranking suffixes
