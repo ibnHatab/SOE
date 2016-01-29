@@ -98,7 +98,7 @@ op p cs
     where c = head cs
 
 #+END_SRC
-10. Removing duplicates ( Removing duplicates.hs )
+10. Removing duplicates ( RemovingDuplicates.hs )
 11. Not the maximum segment sum
 12. Ranking suffixes
 13. The Burrows–Wheeler transform

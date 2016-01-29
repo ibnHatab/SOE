@@ -1,4 +1,4 @@
-module FindingCelebrities where
+module Main where
 
 import Data.List
 
@@ -94,3 +94,6 @@ op p cs
     | not (c `knows` p) = cs
     | otherwise         = p:cs
     where c = head cs
+
+-------------------------------------
+main = putStrLn $ show $ cclique' party
