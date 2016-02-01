@@ -1,0 +1,1 @@
+module RankingSuffixes where

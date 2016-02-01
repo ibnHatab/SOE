@@ -105,7 +105,12 @@ nub' (x:xs) = x : (nub' (xs \\ [x]) )
 
 #+END_SRC
   11. Not the maximum segment sum (NotTheMaximumSegmentSum.hs)
-  12. Ranking suffixes (Ranking Suffixes.hs)
+      #+BEGIN_SRC
+mnss :: [Int] -> Int
+mnss = maximum . map sum . nonsegs
+
+      #+END_SRC
+  12. Ranking suffixes (RankingSuffixes.hs)
   13. The Burrows–Wheeler transform (The Burrows–Wheeler transform.hs)
   14. The last tail (The Last Tail.hs)
   15. All the common prefixes (All the Common Prefixes.hs)
