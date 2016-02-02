@@ -104,14 +104,37 @@ nub' [] = []
 nub' (x:xs) = x : (nub' (xs \\ [x]) )
 
 #+END_SRC
-  11. Not the maximum segment sum (NotTheMaximumSegmentSum.hs)
+  11. Not the maximum segment sum ([[file:src/NotTheMaximumSegmentSum.hs][NotTheMaximumSegmentSum.hs]])
       #+BEGIN_SRC
 mnss :: [Int] -> Int
 mnss = maximum . map sum . nonsegs
 
       #+END_SRC
-  12. Ranking suffixes (RankingSuffixes.hs)
-  13. The Burrows–Wheeler transform (The Burrows–Wheeler transform.hs)
+  12. Ranking suffixes ([[file:src/RankingSuffixes.hs][RankingSuffixes.hs]])
+      #+BEGIN_SRC
+
+rank :: Ord a => [a] -> [Int]
+rank xs = map (\x -> length (filter (<x) xs)) xs
+
+ranktails :: Ord a => [a] -> [Int]
+ranktails = rank . tails
+
+      #+END_SRC
+  13. The Burrows–Wheeler transform ([[file:src/TheBurrowsWheelerTransform.hs][TheBurrowsWheelerTransform.hs]])
+      #+BEGIN_SRC
+
+transform :: Ord a => [a] -> ([a], Int)
+transform xs = (map last xss, position xs xss)
+  where xss = sort (rots xs)
+
+position xs xss = length (takeWhile (<xs) xss)
+
+rots :: Ord a => [a] -> [[a]]
+rots xs = take (length xs) (iterate lrot xs)
+  where lrot (x:xs) = xs ++ [x]
+
+
+      #+END_SRC
   14. The last tail (The Last Tail.hs)
   15. All the common prefixes (All the Common Prefixes.hs)
   16. The Boyer–Moore algorithm (The Boyer–Moore algorithm.hs)
@@ -129,3 +152,26 @@ mnss = maximum . map sum . nonsegs
   28. Loopless functional algorithms (Loopless Functional Algorithms.hs)
   29. The Johnson–Trotter algorithm (The Johnson–Trotter algorithm.hs)
   30. Spider spinning for dummies (Spider spinning For Dummies.hs)
+  31. A Pointless Derivation of Radix Sort (APointlessDerivationOfRadixSort.hs)
+      #+BEGIN_SRC
+radixsort :: (Bounded b, Enum b, Eq b) => [a->b] -> [a] -> [a]
+radixsort = foldr ft id
+  where ft d g = concat . ptn d . g
+
+
+      #+END_SRC
+  32. The Under-Appreciated Unfold (TheUnderAppreciatedUnfold.hs)
+      #+BEGIN_SRC
+levelf' :: Forest b -> [[b]]
+levelf' = unfold' null (map root) (concat . map kids)
+
+levelt' :: Tree b -> [[b]]
+levelt' t = levelf' [t]
+
+bftt' :: Tree a -> [a]
+bftt' = concat . levelt'
+
+bftf' :: Forest a -> [a]
+bftf' = concat . levelf'
+
+      #+END_SRC
