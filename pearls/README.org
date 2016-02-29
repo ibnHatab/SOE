@@ -104,13 +104,7 @@ nub' [] = []
 nub' (x:xs) = x : (nub' (xs \\ [x]) )
 
 #+END_SRC
-  11. Not the maximum segment sum ([[file:src/NotTheMaximumSegmentSum.hs][NotTheMaximumSegmentSum.hs]])
-      #+BEGIN_SRC
-mnss :: [Int] -> Int
-mnss = maximum . map sum . nonsegs
-
-      #+END_SRC
-  12. Ranking suffixes ([[file:src/RankingSuffixes.hs][RankingSuffixes.hs]])
+  11. Ranking suffixes ([[file:src/RankingSuffixes.hs][RankingSuffixes.hs]])
       #+BEGIN_SRC
 
 rank :: Ord a => [a] -> [Int]
@@ -118,6 +112,12 @@ rank xs = map (\x -> length (filter (<x) xs)) xs
 
 ranktails :: Ord a => [a] -> [Int]
 ranktails = rank . tails
+
+      #+END_SRC
+  12. Not the maximum segment sum ([[file:src/NotTheMaximumSegmentSum.hs][NotTheMaximumSegmentSum.hs]])
+      #+BEGIN_SRC
+mnss :: [Int] -> Int
+mnss = maximum . map sum . nonsegs
 
       #+END_SRC
   13. The Burrows–Wheeler transform ([[file:src/TheBurrowsWheelerTransform.hs][TheBurrowsWheelerTransform.hs]])
@@ -135,9 +135,23 @@ rots xs = take (length xs) (iterate lrot xs)
 
 
       #+END_SRC
-  14. The last tail (The Last Tail.hs)
-  15. All the common prefixes (All the Common Prefixes.hs)
-  16. The Boyer–Moore algorithm (The Boyer–Moore algorithm.hs)
+  14. The last tail (TheLastTail.hs)
+      #+BEGIN_SRC
+
+maxtail :: Ord a => [a] -> [a]
+maxtail = maximum . tails
+
+      #+END_SRC
+  15. All the common prefixes ([[file:src/AllTheCommonPrefixes.hs][AllTheCommonPrefixes.hs]])
+      #+BEGIN_SRC
+llcp :: Eq a => [a] -> [a] -> Int
+llcp xs ys =  length $ takeWhile (uncurry (==)) $ zip xs ys
+
+allcp :: Eq a => [a] -> [Int]
+allcp xs = map (llcp xs) (tails xs)
+
+      #+END_SRC
+  16. The Boyer–Moore algorithm (TheBoyerMooreAlgorithm.hs)
   17. The Knuth–Morris–Pratt algorithm (The Knuth–Morris–Pratt algorithm.hs)
   18. Planning solves the rush hour problem (Planning solves the rush Hour Problem.hs)
   19. A simple Sudoku solver (A simple Sudoku Solver.hs)
@@ -152,7 +166,7 @@ rots xs = take (length xs) (iterate lrot xs)
   28. Loopless functional algorithms (Loopless Functional Algorithms.hs)
   29. The Johnson–Trotter algorithm (The Johnson–Trotter algorithm.hs)
   30. Spider spinning for dummies (Spider spinning For Dummies.hs)
-  31. A Pointless Derivation of Radix Sort (APointlessDerivationOfRadixSort.hs)
+  31. A Pointless Derivation of Radix Sort ([[file:src/APointlessDerivationOfRadixSort.hs][APointlessDerivationOfRadixSort.hs]])
       #+BEGIN_SRC
 radixsort :: (Bounded b, Enum b, Eq b) => [a->b] -> [a] -> [a]
 radixsort = foldr ft id
@@ -160,7 +174,7 @@ radixsort = foldr ft id
 
 
       #+END_SRC
-  32. The Under-Appreciated Unfold (TheUnderAppreciatedUnfold.hs)
+  32. The Under-Appreciated Unfold ([[file:src/TheUnderAppreciatedUnfold.hs][TheUnderAppreciatedUnfold.hs]])
       #+BEGIN_SRC
 levelf' :: Forest b -> [[b]]
 levelf' = unfold' null (map root) (concat . map kids)
@@ -175,3 +189,8 @@ bftf' :: Forest a -> [a]
 bftf' = concat . levelf'
 
       #+END_SRC
+  33. Kleisli Categories ([[file:src/KleisliCategories.hs][KleisliCategories.hs]])
+      - Examples from [[http://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/][Category Theory for Programmers: The Preface]] by Bartosz Milewski
+
+  34. CATEGORICAL PROGRAMMING WITH INDUCTIVE AND COINDUCTIVE TYPES by VARMO VENE
+      - Categorical Programming ([[file:src/CategoricalProgramming.hs][CategoricalProgramming.hs]])
